@@ -1,0 +1,25 @@
+{
+  "name": "realtime-dot-editor",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "dev": "turbo dev",
+    "dev:client": "turbo dev --filter=client",
+    "dev:server": "turbo dev --filter=server",
+    "build": "turbo build",
+    "lint": "turbo lint"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.12.4",
+  "engines": {
+    "pnpm": ">=10.12.4",
+    "npm": "use pnpm please!",
+    "yarn": "use pnpm please!"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4"
+  }
+}
