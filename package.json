@@ -8,7 +8,8 @@
     "dev:client": "turbo dev --filter=client",
     "dev:server": "turbo dev --filter=server",
     "build": "turbo build",
-    "lint": "turbo lint"
+    "lint": "turbo lint",
+    "format": "turbo format"
   },
   "keywords": [],
   "author": "",

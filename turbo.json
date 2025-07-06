@@ -11,6 +11,7 @@
       "persistent": true,
       "cache": false
     },
-    "lint": {}
+    "lint": {},
+    "format": {}
   }
 }
