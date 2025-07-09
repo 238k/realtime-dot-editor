@@ -1,5 +1,5 @@
 import './App.css'
-import { DotCanvas } from './features/editor/components/DotCanvas'
+import { DotCanvas } from './components/DotCanvas'
 
 function App() {
 
