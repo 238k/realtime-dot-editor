@@ -1,4 +1,5 @@
 import type { FC } from "react";
+import img from "../assets/ink_eraser.svg"; // Adjust the import path as necessary
 
 type Props = {
   palette: string[];
@@ -12,11 +13,11 @@ export const Palette: FC<Props> = ({
   onSetColor,
 }: Props) => {
   return (
-    <ul>
+    <ul className="grid grid-cols-8 gap-1 p-2">
       {palette.map((color, index) => (
         <li
           key={index}
-          className={`inline-block w-8 h-8 m-1 cursor-pointer border-2 ${
+          className={`w-4 h-4 cursor-pointer border-2 ${
             colorIndex === index ? "border-black" : "border-transparent"
           }`}
           style={{ backgroundColor: color }}
@@ -24,12 +25,20 @@ export const Palette: FC<Props> = ({
         />
       ))}
       <li
-        className={`inline-block w-8 h-8 m-1 cursor-pointer border-2 ${
+        className={`inline-block w-4 h-4 cursor-pointer border-2 ${
           colorIndex === null ? "border-black" : "border-transparent"
         }`}
         style={{ backgroundColor: "transparent" }}
         onClick={() => onSetColor(null)}
-      ></li>
+      >
+        <img
+          className="w-full h-full object-contain"
+          src={img}
+          width={4}
+          height={4}
+          alt=""
+        />
+      </li>
     </ul>
   );
 };

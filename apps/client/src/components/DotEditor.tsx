@@ -4,6 +4,7 @@ import * as Y from "yjs";
 import ansi16Colors from "../consts/ansi16Colors";
 import { Palette } from "./Palette";
 import { DotCanvas } from "./DotCanvas";
+import { Toolbar } from "./Toolbar";
 
 type Props = {
   columns: number;
@@ -17,7 +18,7 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
 
   const [palette, setPalette] = useState<string[]>([]);
   const [pixels, setPixels] = useState<string[][]>([]);
-  const [colorIndex, setColorIndex] = useState<number | null>(null);
+  const [colorIndex, setColorIndex] = useState<number | null>(0);
 
   const updatePixel = (cellX: number, cellY: number) => {
     const index = cellY * columns + cellX;
@@ -76,11 +77,13 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
         onDraw={updatePixel}
         pixels={pixels}
       />
-      <Palette
-        palette={palette}
-        colorIndex={colorIndex}
-        onSetColor={setColorIndex}
-      />
+      <Toolbar>
+        <Palette
+          palette={palette}
+          colorIndex={colorIndex}
+          onSetColor={setColorIndex}
+        />
+      </Toolbar>
     </>
   );
 };
