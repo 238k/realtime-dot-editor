@@ -15,17 +15,17 @@ export const drawBg = (ctx: CanvasRenderingContext2D, config: Config, size: Size
   const cellWidth = size.width / config.columns;
   const cellHeight = size.height / config.rows;
   ctx.save();
-  ctx.strokeStyle = "black";
+  ctx.strokeStyle = "#cccccc";
   ctx.lineWidth = 1;
-  for (let i = 0; i < config.columns - 1; i++) {
+  for (let i = 0; i <= config.columns; i++) {
     ctx.beginPath();
-    ctx.moveTo((i + 1) * cellWidth, 0);
-    ctx.lineTo((i + 1) * cellWidth, size.height);
+    ctx.moveTo((i) * cellWidth, 0);
+    ctx.lineTo((i) * cellWidth, size.height);
     ctx.stroke();
-    for (let j = 0; j < config.rows - 1; j++) {
+    for (let j = 0; j <= config.rows; j++) {
       ctx.beginPath();
-      ctx.moveTo(0, (j + 1) * cellHeight);
-      ctx.lineTo(size.width, (j + 1) * cellHeight);
+      ctx.moveTo(0, (j) * cellHeight);
+      ctx.lineTo(size.width, (j) * cellHeight);
       ctx.stroke();
     }
   }

@@ -1,13 +1,12 @@
-import './App.css'
-import { DotCanvas } from './components/DotCanvas'
+import "./App.css";
+import { DotEditor } from "./components/DotEditor";
 
 function App() {
-
   return (
     <>
-      <DotCanvas columns={10} rows={10} />
+      <DotEditor columns={40} rows={40} />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
