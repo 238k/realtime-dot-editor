@@ -1,17 +1,22 @@
-import { useEffect, useRef, useState, type FC } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WebsocketProvider } from "y-websocket";
 import * as Y from "yjs";
-import ansi16Colors from "../consts/ansi16Colors";
-import { Palette } from "./Palette";
-import { DotCanvas } from "./DotCanvas";
-import { Toolbar } from "./Toolbar";
 
 type Props = {
+  roomId: string;
   columns: number;
   rows: number;
-};
+  colorPalette: string[];
+}
 
-export const DotEditor: FC<Props> = ({ columns, rows }) => {
+/**
+ * 以下の機能を持ちます
+ * - y-websocketへの接続
+ * - pixelsとpaletteの取得、更新
+ * - 色の選択
+ * このhookは各ページのトップで一度だけ呼び出してください
+ */
+export const useDotEditor = ({ roomId, columns, rows, colorPalette }: Props) => {
   const yDocRef = useRef(new Y.Doc());
   const yPixelsRef = useRef(yDocRef.current.getArray<number | null>("pixels"));
   const yPaletteRef = useRef(yDocRef.current.getArray<string>("palette"));
@@ -28,10 +33,14 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
     });
   };
 
+  const selectColor = (index: number | null) => {
+    setColorIndex(index);
+  }
+
   useEffect(() => {
     const wsProvider = new WebsocketProvider(
       "ws://localhost:1234",
-      "my-roomname",
+      roomId,
       yDocRef.current
     );
     wsProvider.once("sync", () => {
@@ -39,7 +48,7 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
         yPixelsRef.current.push(Array(columns * rows).fill(null));
       }
       if (yPaletteRef.current.length === 0) {
-        yPaletteRef.current.push(ansi16Colors);
+        yPaletteRef.current.push(colorPalette);
       }
     });
     const onLoadPallette = () => {
@@ -68,22 +77,13 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
     return () => {
       wsProvider.disconnect();
     };
-  }, [columns, rows]);
-  return (
-    <>
-      <DotCanvas
-        columns={columns}
-        rows={rows}
-        onDraw={updatePixel}
-        pixels={pixels}
-      />
-      <Toolbar>
-        <Palette
-          palette={palette}
-          colorIndex={colorIndex}
-          onSetColor={setColorIndex}
-        />
-      </Toolbar>
-    </>
-  );
-};
+  }, [columns, rows, roomId, colorPalette]);
+
+  return {
+    palette,
+    updatePixel,
+    pixels,
+    selectColor,
+    colorIndex,
+  }
+}

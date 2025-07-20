@@ -1,10 +1,10 @@
 import "./App.css";
-import { DotEditor } from "./components/DotEditor";
+import { TopPage } from "./pages/top/top";
 
 function App() {
   return (
     <>
-      <DotEditor columns={40} rows={40} />
+      <TopPage />
     </>
   );
 }

@@ -16,7 +16,7 @@ export const drawBg = (ctx: CanvasRenderingContext2D, config: Config, size: Size
   const cellHeight = size.height / config.rows;
   ctx.save();
   ctx.strokeStyle = "#cccccc";
-  ctx.lineWidth = 1;
+  ctx.lineWidth = 2;
   for (let i = 0; i <= config.columns; i++) {
     ctx.beginPath();
     ctx.moveTo((i) * cellWidth, 0);

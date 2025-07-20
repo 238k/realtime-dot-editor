@@ -31,14 +31,7 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
     const ctx = ref.current?.getContext("2d");
     if (!ctx) return;
     ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-    drawBg(
-      ctx,
-      {
-        columns,
-        rows,
-      },
-      { width: canvasWidth, height: canvasHeight }
-    );
+
     pixels.forEach((row, rowIndex) => {
       row.forEach((color, colIndex) => {
         if (color) {
@@ -52,6 +45,14 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
         }
       });
     });
+    drawBg(
+      ctx,
+      {
+        columns,
+        rows,
+      },
+      { width: canvasWidth, height: canvasHeight }
+    );            
   }, [columns, rows, pixels]);
 
   return (
