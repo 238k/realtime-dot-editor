@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "npx y-websocket",
     "dev": "cross-env HOST='localhost' PORT='1234' npx y-websocket"
   },
   "keywords": [],

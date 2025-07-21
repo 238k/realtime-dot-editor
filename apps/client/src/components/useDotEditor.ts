@@ -9,6 +9,8 @@ type Props = {
   colorPalette: string[];
 }
 
+const wsUrl = import.meta.env.VITE_WS_URL;
+
 /**
  * 以下の機能を持ちます
  * - y-websocketへの接続
@@ -38,8 +40,9 @@ export const useDotEditor = ({ roomId, columns, rows, colorPalette }: Props) => 
   }
 
   useEffect(() => {
+    console.log(wsUrl);
     const wsProvider = new WebsocketProvider(
-      "ws://localhost:1234",
+      wsUrl,
       roomId,
       yDocRef.current
     );
