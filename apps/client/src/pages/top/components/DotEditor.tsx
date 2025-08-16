@@ -18,13 +18,15 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
       colorPalette: color8,
     });
   return (
-    <div>
-      <Palette
-        palette={palette}
-        colorIndex={colorIndex}
-        onSetColor={selectColor}
-      />
-      <div className="h-2"></div>
+    <div className="bg-white pt-4 pb-12 px-4 md:px-16 rounded-2xl border border-slate-300">
+      <div className="px-2 md:px-4">
+        <Palette
+          palette={palette}
+          colorIndex={colorIndex}
+          onSetColor={selectColor}
+        />
+      </div>
+      <div className="h-4"></div>
       <div className="border-2">
         <DotCanvas
           columns={columns}

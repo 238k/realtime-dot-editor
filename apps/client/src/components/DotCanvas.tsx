@@ -20,8 +20,8 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    const cellWidth = canvas.width / columns;
-    const cellHeight = canvas.height / rows;
+    const cellWidth = canvas.clientWidth / columns;
+    const cellHeight = canvas.clientHeight / rows;
     const cellX = Math.floor(x / cellWidth);
     const cellY = Math.floor(y / cellHeight);
     onDraw(cellX, cellY);
@@ -60,9 +60,9 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
       width={canvasWidth}
       height={canvasHeight}
       ref={ref}
-      className="bg-white"
-      onMouseDown={onDrawPixel}
-      onMouseMove={onDrawPixel}
+      className="bg-white touch-none max-w-full"
+      onPointerDown={onDrawPixel}
+      onPointerMove={onDrawPixel}
     />
   );
 };

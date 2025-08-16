@@ -4,12 +4,12 @@ import { DotEditor } from "./components/DotEditor";
 export const TopPage = () => {
   const descriptionRef = useRef<HTMLElement>(null);
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center px-4 py-16">
       <h1 className="font-bold text-3xl mb-4">Realtime Dot Editor</h1>
       <p className="mb-8">
         オンライン上で同時編集できるドット絵エディターです。
       </p>
-      <div className="flex gap-4 w-96">
+      <div className="flex gap-4 w-full max-w-[400px] md:w-96">
         <button className="flex-1 bg-blue-600 text-white font-bold py-2 px-4 rounded cursor-pointer hover:bg-blue-500 transition">
           部屋をつくる
         </button>
@@ -23,7 +23,7 @@ export const TopPage = () => {
         </button>
       </div>
       <div className="h-8"></div>
-      <div className="bg-white pt-4 pb-12 px-16 rounded-2xl border border-slate-300">
+      <div className="max-w-screen">
         <DotEditor columns={20} rows={20} />
       </div>
       <section ref={descriptionRef} className="h-800 py-12 mt-24">
