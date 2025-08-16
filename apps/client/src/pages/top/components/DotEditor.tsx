@@ -24,13 +24,15 @@ export const DotEditor: FC<Props> = ({ columns, rows }) => {
         colorIndex={colorIndex}
         onSetColor={selectColor}
       />
-      <div className="h-4"></div>
-      <DotCanvas
-        columns={columns}
-        rows={rows}
-        onDraw={updatePixel}
-        pixels={pixels}
-      />
+      <div className="h-2"></div>
+      <div className="border-2">
+        <DotCanvas
+          columns={columns}
+          rows={rows}
+          onDraw={updatePixel}
+          pixels={pixels}
+        />
+      </div>
     </div>
   );
 };

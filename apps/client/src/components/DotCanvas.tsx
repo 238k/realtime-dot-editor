@@ -52,7 +52,7 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
         rows,
       },
       { width: canvasWidth, height: canvasHeight }
-    );            
+    );
   }, [columns, rows, pixels]);
 
   return (
@@ -60,7 +60,7 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
       width={canvasWidth}
       height={canvasHeight}
       ref={ref}
-      className="bg-gray-100"
+      className="bg-white"
       onMouseDown={onDrawPixel}
       onMouseMove={onDrawPixel}
     />

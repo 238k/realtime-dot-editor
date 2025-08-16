@@ -40,7 +40,6 @@ export const useDotEditor = ({ roomId, columns, rows, colorPalette }: Props) => 
   }
 
   useEffect(() => {
-    console.log(wsUrl);
     const wsProvider = new WebsocketProvider(
       wsUrl,
       roomId,
