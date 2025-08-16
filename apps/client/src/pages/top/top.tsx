@@ -24,7 +24,7 @@ export const TopPage = () => {
       </div>
       <div className="h-8"></div>
       <div className="max-w-screen">
-        <DotEditor columns={20} rows={20} />
+        <DotEditor columns={16} rows={16} />
       </div>
       <section ref={descriptionRef} className="h-800 py-12 mt-24">
         <h2 className="font-bold text-2xl">Realtime Dot Editorについて</h2>

@@ -22,6 +22,7 @@ export const useDotEditor = ({ roomId, columns, rows, colorPalette }: Props) => 
   const yDocRef = useRef(new Y.Doc());
   const yPixelsRef = useRef(yDocRef.current.getArray<number | null>("pixels"));
   const yPaletteRef = useRef(yDocRef.current.getArray<string>("palette"));
+  const ySizeRef = useRef(yDocRef.current.getMap<{ column: number, row: number }>("size"));
 
   const [palette, setPalette] = useState<string[]>([]);
   const [pixels, setPixels] = useState<string[][]>([]);
@@ -46,6 +47,12 @@ export const useDotEditor = ({ roomId, columns, rows, colorPalette }: Props) => 
       yDocRef.current
     );
     wsProvider.once("sync", () => {
+      const size = ySizeRef.current.get("size");
+      if (size?.column !== columns || size.row !== rows) {
+        yPixelsRef.current.delete(0, yPixelsRef.current.length);
+        ySizeRef.current.set("size", { column: columns, row: rows });
+
+      }
       if (yPixelsRef.current.length === 0) {
         yPixelsRef.current.push(Array(columns * rows).fill(null));
       }
