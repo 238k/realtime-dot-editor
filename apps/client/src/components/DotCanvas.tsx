@@ -20,6 +20,9 @@ export const DotCanvas: FC<Props> = ({ columns, rows, onDraw, pixels }) => {
     const rect = canvas.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
+    if (x < 0 || x > canvas.clientWidth || y < 0 || y > canvas.clientHeight) {
+      return;
+    }
     const cellWidth = canvas.clientWidth / columns;
     const cellHeight = canvas.clientHeight / rows;
     const cellX = Math.floor(x / cellWidth);
